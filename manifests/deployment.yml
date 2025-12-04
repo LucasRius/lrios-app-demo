@@ -3,7 +3,7 @@ kind: Rollout
 metadata:
   name: demo-app
 spec:
-  replicas: 15
+  replicas: 10
   selector:
     matchLabels:
       app: demo-app
@@ -13,8 +13,8 @@ spec:
         app: demo-app
     spec:
       containers:
-        - name: nginx
-          image: nginx:latest
+        - name: webcoloer
+          image: fabricioveronez/web-color:blue
           ports:
             - containerPort: 80
   strategy:
