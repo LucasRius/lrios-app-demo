@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: webcolor
-          image: lucasrios92/web-color:bluesalve 
+          image: lucasrios92/web-color:blue
           ports:
             - containerPort: 80
 
