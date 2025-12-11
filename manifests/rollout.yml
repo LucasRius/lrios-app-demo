@@ -6,7 +6,7 @@ metadata:
     app: demo-app
     argo-rollout-managed: "true"
 spec:
-  replicas: 10
+  replicas: 0
   revisionHistoryLimit: 1
   selector:
     matchLabels:
