@@ -1,16 +1,16 @@
-# apiVersion: argoproj.io/v1alpha1
-# kind: Rollout
-# metadata:
-#   name: demo-app
-#   labels: # <--- Adicionado/Corrigido
-#     app: demo-app
-#     argo-rollout-managed: "true"
-# spec:
-#   replicas: 0
-#   revisionHistoryLimit: 1
-#   selector:
-#     matchLabels:
-#       app: demo-app
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: demo-app
+  labels: # <--- Adicionado/Corrigido
+    app: demo-app
+    argo-rollout-managed: "true"
+spec:
+  replicas: 3
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: demo-app
   # template:
   #   metadata:
   #     labels:
@@ -21,16 +21,16 @@
   #         image: lucasrios92/web-color:green
   #         ports:
   #           - containerPort: 80
-  # workloadRef:
-  #   apiVersion: apps/v1
-  #   kind: Deployment
-  #   name: demo-app-deployment # Substitua pelo nome do seu Deployment atual
-  #   scaleDown: onsuccess
-  # strategy:
-  #     canary:
-  #       steps:
-  #         - setWeight: 20
-  #         - pause: {duration: 10s}
+  workloadRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: demo-app-deployment # Substitua pelo nome do seu Deployment atual
+    scaleDown: onsuccess
+  strategy:
+      canary:
+        steps:
+          - setWeight: 20
+          - pause: {duration: 10s}
 
 
 
