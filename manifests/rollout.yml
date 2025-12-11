@@ -2,6 +2,9 @@ apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
   name: demo-app
+  labels: # <--- Adicionado/Corrigido
+    app: demo-app
+    argo-rollout-managed: "true"
 spec:
   replicas: 10
   revisionHistoryLimit: 1

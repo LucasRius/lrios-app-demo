@@ -4,6 +4,7 @@ metadata:
   name: demo-app-service
   labels: 
       app: demo-app
+      argo-rollout-managed: "true"
 spec:
   selector:
     app: demo-app
