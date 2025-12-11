@@ -6,7 +6,7 @@ metadata:
   name: demo-app
 spec:
   replicas: 10
-  revisionHistoryLimit: 1
+  # revisionHistoryLimit: 1
   selector:
     matchLabels:
       app: demo-app
@@ -20,6 +20,7 @@ spec:
           image: lucasrios92/web-color:bluesalve 
           ports:
             - containerPort: 80
+
   # strategy:
   #   canary:
   #     steps:
