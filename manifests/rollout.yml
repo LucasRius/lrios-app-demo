@@ -22,13 +22,15 @@ spec:
   #         ports:
   #           - containerPort: 80
   workloadRef:
-      kind: Deployment
-      name: demo-app-deployment # Substitua pelo nome do seu Deployment atual
-      scaleDown: never
+    apiVersion: apps/v1
+    kind: Deployment
+    name: demo-app-deployment # Substitua pelo nome do seu Deployment atual
+    scaleDown: onsuccess
   strategy:
-      blueGreen:
-        activeService: demo-app-service
-        autoPromotionEnabled: false
+      canary:
+        steps:
+          - setWeight: 20
+          - pause: {duration: 10s}
 
 
 
