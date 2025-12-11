@@ -11,21 +11,21 @@ spec:
   selector:
     matchLabels:
       app: demo-app
-  # template:
-  #   metadata:
-  #     labels:
-  #       app: demo-app
-  #   spec:
-  #     containers:
-  #       - name: webcolor
-  #         image: lucasrios92/web-color:green
-  #         ports:
-  #           - containerPort: 80
-  workloadRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: demo-app-deployment # Substitua pelo nome do seu Deployment atual
-    scaleDown: onsuccess
+  template:
+    metadata:
+      labels:
+        app: demo-app
+    spec:
+      containers:
+        - name: webcolor
+          image: lucasrios92/web-color:green
+          ports:
+            - containerPort: 80
+  # workloadRef:
+  #   apiVersion: apps/v1
+  #   kind: Deployment
+  #   name: demo-app-deployment # Substitua pelo nome do seu Deployment atual
+  #   scaleDown: onsuccess
   strategy:
       canary:
         steps:

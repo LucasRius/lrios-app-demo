@@ -1,25 +1,25 @@
 # apiVersion: argoproj.io/v1alpha1
 # kind: Rollout
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: demo-app-deployment
-spec:
-  replicas: 3
-  revisionHistoryLimit: 1
-  selector:
-    matchLabels:
-      app: demo-app
-  template:
-    metadata:
-      labels:
-        app: demo-app
-    spec:
-      containers:
-        - name: webcolor
-          image: lucasrios92/web-color:green
-          ports:
-            - containerPort: 80
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: demo-app-deployment
+# spec:
+#   replicas: 3
+#   revisionHistoryLimit: 1
+#   selector:
+#     matchLabels:
+#       app: demo-app
+#   template:
+#     metadata:
+#       labels:
+#         app: demo-app
+#     spec:
+#       containers:
+#         - name: webcolor
+#           image: lucasrios92/web-color:green
+#           ports:
+#             - containerPort: 80
 
   # strategy:
   #   canary:
