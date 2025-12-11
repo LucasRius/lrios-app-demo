@@ -1,0 +1,53 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+# apiVersion: apps/v1
+# kind: Deployment
+metadata:
+  name: demo-app
+spec:
+  replicas: 10
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: demo-app
+  template:
+    metadata:
+      labels:
+        app: demo-app
+    spec:
+      containers:
+        - name: webcolor
+          image: lucasrios92/web-color:green
+          ports:
+            - containerPort: 80
+  workloadRef:
+      kind: Deployment
+      name: demo-app # Substitua pelo nome do seu Deployment atual
+      scaleDown: never
+  strategy:
+      blueGreen:
+        # O Service que será usado para o tráfego de PROD (Será a versão Blue ou Stable)
+        activeService: demo-app
+        
+        # Opcional: Service temporário para a versão de teste (Green ou Preview)
+        # Se não for usado (como neste exemplo de migração imediata), o Rollout fará o switch direto
+        # previewService: minha-aplicacao-preview-service 
+        
+        # Tempo em segundos para esperar após o deploy do novo conjunto de Pods (Green)
+        # Útil para testes manuais antes do switch de Service. Defina para '0' para switch imediato.
+        autoPromotionEnabled: true
+        autoPromotionSeconds: 0
+
+
+
+
+##POS MIGRATION
+  # strategy:
+  #   canary:
+  #     steps:
+  #       - setWeight: 25
+  #       - pause: {}
+  #       - setWeight: 50
+  #       - pause: {}
+  #       - setWeight: 100
+  #       - pause: {}
