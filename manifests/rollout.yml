@@ -20,11 +20,11 @@ spec:
   #           - containerPort: 80
   workloadRef:
       kind: Deployment
-      name: demo-app # Substitua pelo nome do seu Deployment atual
+      name: demo-app-deployment # Substitua pelo nome do seu Deployment atual
       scaleDown: never
   strategy:
       blueGreen:
-        activeService: demo-app
+        activeService: demo-app-service
         autoPromotionEnabled: false
 
 
