@@ -27,7 +27,7 @@ spec:
       scaleDown: never
   strategy:
       blueGreen:
-        activeService: demo-app-service
+        activeService: demo-app
         autoPromotionEnabled: false
 
 
