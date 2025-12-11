@@ -26,17 +26,8 @@ spec:
       scaleDown: never
   strategy:
       blueGreen:
-        # O Service que será usado para o tráfego de PROD (Será a versão Blue ou Stable)
-        activeService: demo-app
-        
-        # Opcional: Service temporário para a versão de teste (Green ou Preview)
-        # Se não for usado (como neste exemplo de migração imediata), o Rollout fará o switch direto
-        # previewService: minha-aplicacao-preview-service 
-        
-        # Tempo em segundos para esperar após o deploy do novo conjunto de Pods (Green)
-        # Útil para testes manuais antes do switch de Service. Defina para '0' para switch imediato.
-        autoPromotionEnabled: true
-        autoPromotionSeconds: 0
+        activeService: minha-aplicacao-service 
+        autoPromotionEnabled: false
 
 
 
