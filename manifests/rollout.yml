@@ -1,7 +1,5 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
-# apiVersion: apps/v1
-# kind: Deployment
 metadata:
   name: demo-app
 spec:
@@ -10,23 +8,23 @@ spec:
   selector:
     matchLabels:
       app: demo-app
-  template:
-    metadata:
-      labels:
-        app: demo-app
-    spec:
-      containers:
-        - name: webcolor
-          image: lucasrios92/web-color:green
-          ports:
-            - containerPort: 80
+  # template:
+  #   metadata:
+  #     labels:
+  #       app: demo-app
+  #   spec:
+  #     containers:
+  #       - name: webcolor
+  #         image: lucasrios92/web-color:green
+  #         ports:
+  #           - containerPort: 80
   workloadRef:
       kind: Deployment
       name: demo-app # Substitua pelo nome do seu Deployment atual
       scaleDown: never
   strategy:
       blueGreen:
-        activeService: minha-aplicacao-service 
+        activeService: demo-app
         autoPromotionEnabled: false
 
 
